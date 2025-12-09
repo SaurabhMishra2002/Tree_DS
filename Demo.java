@@ -34,7 +34,9 @@ public class Demo {
         Stack<Pair> st = new Stack<>();
         st.push(rpr);
 
-
+        while(st.size() > 0){
+            
+        }
 
         
     }
