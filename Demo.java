@@ -43,7 +43,8 @@ public class Demo {
 
         return ls+rs+node.data;
     }
-        public static int Max(Node node){
+    
+    public static int Max(Node node){
             if (node == null){
                 return Integer.MIN_VALUE;
             }
@@ -56,7 +57,7 @@ public class Demo {
             return max;
     }
 
-        public static int height(Node node){
+    public static int height(Node node){
             if(node == null){
                 return -1; // -1 ----> edge OR 0 --- for Node 
             }
@@ -67,7 +68,17 @@ public class Demo {
          return Math.max(lh,rh)+1;
     }
     
+    public static void Traversal(Node node){
+        if(node == null){
+            return ;
+        }
 
+        System.out.println(node.data +"-> PRE");
+        Traversal(node.left);
+        System.out.println(node.data +"-> IN");
+        Traversal(node.right);
+        System.out.println(node.data +"-> POS");
+ }
     public static void main(String[] args) {
 
 
@@ -117,14 +128,16 @@ public class Demo {
         
     }
 
-    int Size =size(root);
-    int max = Max(root);
-    int height = height(root);
-    int sum  = sum(root);
+    // int Size =size(root);
+    // int max = Max(root);
+    // int height = height(root);
+    // int sum  = sum(root);
 
-    System.out.println(Size);
-    System.out.println(max);
-    System.out.println(height);
-    System.out.println(sum);    
+    // System.out.println(Size);
+    // System.out.println(max);
+    // System.out.println(height);
+    // System.out.println(sum); 
+    
+    Traversal(root);
 }
 }   
