@@ -22,7 +22,55 @@ public class Demo {
         }
     }
 
+    public static int size(Node node){
+        if (node == null){
+            return 0;
+        }
+
+        int ls = size(node.left);
+        int rs = size(node.right);
+
+        return ls+rs+1;
+    }
+
+    public static int sum(Node node){
+        if (node == null){
+            return 0;
+        }
+
+        int ls = sum(node.left);
+        int rs = sum(node.right);
+
+        return ls+rs+node.data;
+    }
+        public static int Max(Node node){
+            if (node == null){
+                return Integer.MIN_VALUE;
+            }
+
+            int ans1 = Max(node.left);
+            int ans2 = Max(node.right);
+            
+            int max = Math.max(node.data,Math.max(ans1,ans2));
+
+            return max;
+    }
+
+        public static int height(Node node){
+            if(node == null){
+                return -1; // -1 ----> edge OR 0 --- for Node 
+            }
+
+            int lh = height(node.left);
+            int rh = height(node.right);
+
+         return Math.max(lh,rh)+1;
+    }
+    
+
     public static void main(String[] args) {
+
+
         // System.out.println("Hello, World!");
 
         Integer[] arr = {50,25,12,null,null,37,30,null,null,40,null,null,75,62,null,70,null,null,87,null,null};
@@ -68,5 +116,15 @@ public class Demo {
             
         
     }
+
+    int Size =size(root);
+    int max = Max(root);
+    int height = height(root);
+    int sum  = sum(root);
+
+    System.out.println(Size);
+    System.out.println(max);
+    System.out.println(height);
+    System.out.println(sum);    
 }
 }   
