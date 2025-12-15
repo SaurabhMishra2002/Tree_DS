@@ -24,6 +24,19 @@ public class Inorder {
         }
     }
 
+    public static void Display(Node node){
+        if(node == null){
+            return;
+        }
+        String str = "";
+        str += node.left == null ? "L" : node.left.data + "L";
+        str += "M" + node.data + "M";
+        str += node.right == null ? "R" : node.right.data + "R";
+        System.out.println(str);
+        Display(node.left);
+        Display(node.right);
+    }
+
     public static void Inorder(Node node,ArrayList<Integer> res){
         if (node == null)
             return;
@@ -36,6 +49,41 @@ public class Inorder {
         
         // Traverse the right subtree last
         Inorder(node.right, res);
+    }
+
+
+    public static ArrayList<Integer> inorderIter(Node root, ArrayList<Integer> res){
+        ArrayList<Integer> ans = new ArrayList<>();
+                
+        Node Curr = root;
+        Stack<Node> st = new Stack<>();
+
+        while(Curr != null || !st.isEmpty()){
+
+
+            while(Curr != null){
+                st.push(Curr);
+
+                Curr = Curr.left;
+            }
+
+            Curr = st.pop();
+            ans.add(Curr.data);
+
+
+            Curr = Curr.right;
+        }
+
+        return ans;
+    }
+
+      //Printing the ArrayList
+
+     static void printList(ArrayList<Integer> v) {
+        for (int i : v) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -83,10 +131,11 @@ public class Inorder {
         
     }
 
-      ArrayList<Integer> res = new ArrayList<>();
-        Inorder(root, res);
+    Display(root);
 
-        for(int node : res)
-            System.out.print(node + " ");
+    System.out.println("Inorder Traversal (Iterative): ");
+    ArrayList<Integer> result = inorderIter(root, new ArrayList<>());
+    printList(result);
+
     }
 }
